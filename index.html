@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<style>
+    .functionality-container{
+        padding:1rem 4rem;
+        display: grid;
+        grid-template-columns: min-content auto min-content;
+    }
+
+    
+    #deleteCar {
+      margin-top: 0;
+    }
+    #addCar {
+      margin-top: 75px;
+    }
+    i{
+        padding:0 5px;
+        color:#ffc107;
+        cursor:pointer;
+        transform: scale(1);
+        transition: .5s ease-in-out;
+        opacity: 0.6;
+    }
+    i:hover{
+      transform: scale(1.2);
+      opacity: .8;
+    }
+    .adding{
+        display: grid;
+        grid-template-columns: 2fr 2fr 2fr 1fr;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding:2rem;
+    }
+    .element{
+        padding:0 15px;
+    }
+   
+    .container {
+      margin:3rem;
+      margin-left:auto;
+      margin-right:auto;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    }
+    .drops {
+      margin: 0 10px;
+    }
+   
+    
+</style>
+    <title>Car list</title>
+</head>
+<body>
+    <div class="container adding">
+        <div class="element">
+            <label for="brand" class="form-label">Car brand</label>
+            <input type="text" class="form-control" id="brand" required >
+         </div>
+         <div class="element">
+            <label for="model" class="form-label">Car model</label>
+            <input type="text" class="form-control" id="model" required>
+         </div>
+         <div class="element">
+            <label for="year" class="form-label">Prod. year</label>
+            <input type="number" class="form-control" id="year" required>
+         </div>
+        <button type="submit" id="addCar" class="container btn btn-outline-warning">Add</button>
+    </div>
+  
+    <div class="container functionality-container">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle drops" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Sort by
+            </button>
+            <ul id="sorting-options" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">Default</a></li>
+              <li><a class="dropdown-item" href="#">Brand</a></li>
+              <li><a class="dropdown-item" href="#">Year(oldest to youngest)</a></li>
+              <li><a class="dropdown-item" href="#">Year(youngest to oldest)</a></li>
+            </ul>
+          </div>
+
+          <div class="gap-2 d-grid">
+            <button id="clear" class="btn btn-outline-danger" type="button" >Clear all</button>
+          </div>
+
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle drops" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Filter
+            </button>
+            <ul id="brands" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+             
+            </ul>
+          </div>
+    </div>
+    <table class="container table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Brand</th>
+            <th scope="col">Model</th>
+            <th scope="col">Year</th>
+          </tr>
+        </thead>
+        <tbody id="table-content">
+          <!-- <tr>
+            <th scope="row">1</th>
+            <td>Porshe</td>
+            <td>C123</td>
+            <td>2019</td>
+          </tr> -->
+        </tbody>
+        
+      </table>
+
+      <div id="myModal" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Fill data to edit a car</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+             
+                <form>
+                    <div class="mb-3">
+                        <label for="brand" class="form-label">Car brand</label>
+                        <input type="text" class="form-control" id="brand-edit"  >
+                     </div>
+                     <div class="mb-3">
+                        <label for="model" class="form-label">Car model</label>
+                        <input type="text" class="form-control" id="model-edit" >
+                     </div>
+                     <div class="mb-3">
+                        <label for="year" class="form-label">Production year</label>
+                        <input type="number" class="form-control" id="year-edit" >
+                     </div>
+                    <button type="submit" id="editCar" class="container btn btn-outline-warning">Edit</button>
+                    <button type="submit" id="deleteCar" class="container btn btn-outline-danger">Delete</button>
+                  </form>
+            </div>
+    
+          </div>
+        </div>
+      </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+</body>
+</html>
